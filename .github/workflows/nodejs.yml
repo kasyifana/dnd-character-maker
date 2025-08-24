@@ -29,14 +29,14 @@ jobs:
         CI: true
     - name: List output files
       run: ls build
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        FTP_SERVER: mi3-wss6.a2hosting.com
-        FTP_USERNAME: mi3-wss6\drogogan
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        METHOD: ftp
-        PORT: 21
-        LOCAL_DIR: build
-        REMOTE_DIR: "httpdocs/dnd"
-        ARGS: --delete --exclude-glob=*.pdf
+    # - name: FTP-Deploy-Action
+    #   uses: SamKirkland/FTP-Deploy-Action@2.0.0
+    #   env:
+    #     FTP_SERVER: mi3-wss6.a2hosting.com
+    #     FTP_USERNAME: mi3-wss6\drogogan
+    #     FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    #     METHOD: ftp
+    #     PORT: 21
+    #     LOCAL_DIR: build
+    #     REMOTE_DIR: "httpdocs/dnd"
+    #     ARGS: --delete --exclude-glob=*.pdf
