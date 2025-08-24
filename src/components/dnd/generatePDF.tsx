@@ -4,6 +4,8 @@ import { Equipment } from '../../core/types';
 import DndCharacter from '../../core/dndcharacter';
 import Util from '../../core/util';
 import { saveAs } from 'file-saver';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 interface CharacterPdfModel extends DndCharacter {
     allLanguagesChosen: () => boolean;
@@ -60,6 +62,76 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
         }
     }
 
+    handleGenerateCheatSheet = () => {
+        // Generate a tabular cheat sheet using jspdf-autotable
+        const { spells, class: cls, characterName } = this.props;
+        if (!spells || spells.length === 0) {
+            alert('Tidak ada spell yang dipilih. Pilih dulu beberapa spell.');
+            return;
+        }
+
+        // Prepare data
+        const selected = [...spells].sort((a: any, b: any) => {
+            const la = (typeof a.level === 'number' ? a.level : 0);
+            const lb = (typeof b.level === 'number' ? b.level : 0);
+            if (la !== lb) return la - lb;
+            return (a.name || '').localeCompare(b.name || '');
+        });
+
+        const levelLabel = (lvl: number) => {
+            if (lvl === 0) return 'Cantrip';
+            const suffix = (n: number) => (n === 1 ? 'st' : n === 2 ? 'nd' : n === 3 ? 'rd' : 'th');
+            return `${lvl}${suffix(lvl)}`;
+        };
+
+        const rows = selected.map((s: any) => {
+            const lvl = levelLabel(typeof s.level === 'number' ? s.level : 0);
+            const time = String(s.casting_time || '-');
+            const range = String(s.range || '-');
+            const dur = String(s.duration || '-');
+            const comp = String((s.components && s.components.raw) || '-');
+            const conc = dur.toLowerCase().startsWith('concentration') ? 'Y' : '';
+            const ritual = s.ritual ? 'Y' : '';
+            const desc = String(s.description || '');
+            return [String(s.name || ''), lvl, time, range, dur, comp, conc, ritual, desc];
+        });
+
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        const margin = 36;
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        const title = `Spell Cheat Sheet${characterName ? ' · ' + characterName : ''}${cls?.text ? ' · ' + cls.text : ''}`;
+        doc.text(title, margin, 32 + margin);
+
+    autoTable(doc, {
+            startY: 50 + margin,
+            head: [[
+        'Name', 'Level', 'Casting Time', 'Range', 'Duration', 'Components', 'Concentration', 'Ritual', 'Description'
+            ]],
+            body: rows,
+            styles: { font: 'helvetica', fontSize: 8, cellPadding: 2, valign: 'top' },
+            headStyles: { fillColor: [33, 150, 243], textColor: 255, fontStyle: 'bold' },
+            columnStyles: {
+                0: { cellWidth: 85 }, // Name (slightly smaller)
+                1: { cellWidth: 26 }, // Lvl smaller
+                2: { cellWidth: 52 }, // Time smaller
+                3: { cellWidth: 45 }, // Range smaller
+                4: { cellWidth: 52 }, // Dur smaller
+                5: { cellWidth: 75 }, // Comp smaller
+                6: { cellWidth: 24 }, // Conc
+                7: { cellWidth: 24 }, // Rit
+                8: { cellWidth: 'auto' }, // Desc gets the rest
+            },
+            theme: 'grid',
+            pageBreak: 'auto',
+            bodyStyles: { lineColor: [222, 222, 222] },
+            willDrawCell: (data: any) => {
+                // No-op hook placeholder if needed later
+            }
+        });
+
+        doc.save(`Spells Cheat Sheet - ${characterName || cls.text || 'Character'} (Table).pdf`);
+    };
     get allChoicesFulfilled(): boolean {
         return this.props.allProficienciesChosen() &&
             this.props.allStatsAssigned &&
@@ -691,6 +763,14 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
                     onClick={(e) => this.handleGenerate(e)}
                     className={'button is-large ' + (!this.allChoicesFulfilled ? 'is-outlined' : 'is-success')}
                 >Generate PDF</button>
+                <div style={{ height: 8 }} />
+                <button
+                    type="button"
+                    id="generate-cheatsheet"
+                    disabled={this.props.spells.length === 0}
+                    onClick={this.handleGenerateCheatSheet}
+                    className={'button is-large is-info ' + (this.props.spells.length === 0 ? 'is-outlined' : '')}
+                >Generate Spell Cheat Sheet</button>
             </div>
         )
     }
