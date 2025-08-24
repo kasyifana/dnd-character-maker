@@ -16,6 +16,7 @@ import LanguagesComponent from './languages';
 import TraitsComponent from './traits';
 import FreeFields from './freeFields';
 import GeneratePDF from './generatePDF';
+import SpellsComponent from './spells';
 
 interface Props { }
 
@@ -40,6 +41,7 @@ export default class DndCharacterMakerComponent extends React.Component<Props, D
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleBackgroundToolChoiceChange = this.handleBackgroundToolChoiceChange.bind(this);
         this.handleBackgroundSpecialtyChange = this.handleBackgroundSpecialtyChange.bind(this);
+        this.handleSpellsChange = this.handleSpellsChange.bind(this);
 
         this.allLanguagesChosen = this.allLanguagesChosen.bind(this);
         this.allProficienciesChosen = this.allProficienciesChosen.bind(this);
@@ -110,7 +112,8 @@ export default class DndCharacterMakerComponent extends React.Component<Props, D
             equipChoices: [],
             proficiencies: [],
             languageids: [],
-            backgroundSpecialty: 0
+            backgroundSpecialty: 0,
+            spells: []
         });
     }
 
@@ -180,6 +183,13 @@ export default class DndCharacterMakerComponent extends React.Component<Props, D
         this.setState({
             ...this.state,
             [name]: value
+        });
+    }
+
+    handleSpellsChange(spells: any[]) {
+        this.setState({
+            ...this.state,
+            spells: spells
         });
     }
 
@@ -296,6 +306,16 @@ export default class DndCharacterMakerComponent extends React.Component<Props, D
                     <FreeFields {...this.state}
                         setField={this.handleInputChange}
                         setImage={this.handleImageChange} />
+
+                    {this.state.class.spellCasting && (
+                        <SpellsComponent
+                            class={this.state.class}
+                            level={this.state.level}
+                            selectedSpells={this.state.spells}
+                            setSpells={this.handleSpellsChange}
+                            statModifiers={this.state.statModifiers}
+                        />
+                    )}
 
                     <GeneratePDF {...this.state}
                         allLanguagesChosen={this.allLanguagesChosen}

@@ -1,6 +1,14 @@
 import { ArmorCategory, EquipmentCategory, WeaponCategory, DamageType, XpLevel, Modifier, StatBlock, Skill, Alignment, ProficiencyLevel, Language, ToolProficiency, Backpack, Equipment, Feat } from "./types";
 
 export class DndReference {
+  public stats: StatBlock[] = [
+    { id: 0, text: 'Strength' },
+    { id: 1, text: 'Dexterity' },
+    { id: 2, text: 'Constitution' },
+    { id: 3, text: 'Intelligence' },
+    { id: 4, text: 'Wisdom' },
+    { id: 5, text: 'Charisma' },
+  ];
   public feats: Feat[] = [
     { id: 0, text: 'Alert' },
     { id: 1, text: 'Athlete', attributeBoost: [0, 1] },

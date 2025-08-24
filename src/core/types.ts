@@ -1,3 +1,9 @@
+export type RacialSpell = {
+    name: string;
+    level: number;
+    ability?: number;  // The ability score used for spellcasting (e.g., 5 for CHA)
+}
+
 export type Race = {
     id: number;
     raceid: number;
@@ -9,6 +15,7 @@ export type Race = {
     languages: number[];
     extraFeatures: RaceFeature[];
     bonusWeaponProficiencies?: number[];
+    spells?: RacialSpell[];
 }
 
 export type RaceFeature = {

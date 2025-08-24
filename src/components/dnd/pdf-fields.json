@@ -1,0 +1,1667 @@
+{
+  "ClassLevel": [
+    {
+      "type": "string"
+    }
+  ],
+  "Background": [
+    {
+      "type": "string"
+    }
+  ],
+  "PlayerName": [
+    {
+      "type": "string"
+    }
+  ],
+  "CharacterName": [
+    {
+      "type": "string"
+    }
+  ],
+  "Race ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Alignment": [
+    {
+      "type": "string"
+    }
+  ],
+  "XP": [
+    {
+      "type": "string"
+    }
+  ],
+  "Inspiration": [
+    {
+      "type": "string"
+    }
+  ],
+  "STR": [
+    {
+      "type": "string"
+    }
+  ],
+  "ProfBonus": [
+    {
+      "type": "string"
+    }
+  ],
+  "AC": [
+    {
+      "type": "string"
+    }
+  ],
+  "Initiative": [
+    {
+      "type": "string"
+    }
+  ],
+  "Speed": [
+    {
+      "type": "string"
+    }
+  ],
+  "PersonalityTraits ": [
+    {
+      "type": "string"
+    }
+  ],
+  "STRmod": [
+    {
+      "type": "string"
+    }
+  ],
+  "ST Strength": [
+    {
+      "type": "string"
+    }
+  ],
+  "DEX": [
+    {
+      "type": "string"
+    }
+  ],
+  "Ideals": [
+    {
+      "type": "string"
+    }
+  ],
+  "DEXmod ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Bonds": [
+    {
+      "type": "string"
+    }
+  ],
+  "CON": [
+    {
+      "type": "string"
+    }
+  ],
+  "HDTotal": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 12": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 13": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 14": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "CONmod": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 15": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 16": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 17": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "HD": [
+    {
+      "type": "string"
+    }
+  ],
+  "Flaws": [
+    {
+      "type": "string"
+    }
+  ],
+  "INT": [
+    {
+      "type": "string"
+    }
+  ],
+  "ST Dexterity": [
+    {
+      "type": "string"
+    }
+  ],
+  "ST Constitution": [
+    {
+      "type": "string"
+    }
+  ],
+  "ST Intelligence": [
+    {
+      "type": "string"
+    }
+  ],
+  "ST Wisdom": [
+    {
+      "type": "string"
+    }
+  ],
+  "ST Charisma": [
+    {
+      "type": "string"
+    }
+  ],
+  "Acrobatics": [
+    {
+      "type": "string"
+    }
+  ],
+  "Animal": [
+    {
+      "type": "string"
+    }
+  ],
+  "Athletics": [
+    {
+      "type": "string"
+    }
+  ],
+  "Deception ": [
+    {
+      "type": "string"
+    }
+  ],
+  "History ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn Name": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn1 AtkBonus": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn1 Damage": [
+    {
+      "type": "string"
+    }
+  ],
+  "Insight": [
+    {
+      "type": "string"
+    }
+  ],
+  "Intimidation": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn Name 2": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn2 AtkBonus ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn Name 3": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn3 AtkBonus  ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 11": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 18": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 19": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 20": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 21": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 22": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "INTmod": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn2 Damage ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Investigation ": [
+    {
+      "type": "string"
+    }
+  ],
+  "WIS": [
+    {
+      "type": "string"
+    }
+  ],
+  "Arcana": [
+    {
+      "type": "string"
+    }
+  ],
+  "Perception ": [
+    {
+      "type": "string"
+    }
+  ],
+  "WISmod": [
+    {
+      "type": "string"
+    }
+  ],
+  "CHA": [
+    {
+      "type": "string"
+    }
+  ],
+  "Nature": [
+    {
+      "type": "string"
+    }
+  ],
+  "Performance": [
+    {
+      "type": "string"
+    }
+  ],
+  "Medicine": [
+    {
+      "type": "string"
+    }
+  ],
+  "Religion": [
+    {
+      "type": "string"
+    }
+  ],
+  "Stealth ": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 23": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 24": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 25": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 26": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 27": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 28": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 29": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 30": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 31": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 32": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 33": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 34": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 35": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 36": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 37": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 38": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 39": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 40": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Persuasion": [
+    {
+      "type": "string"
+    }
+  ],
+  "HPMax": [
+    {
+      "type": "string"
+    }
+  ],
+  "HPCurrent": [
+    {
+      "type": "string"
+    }
+  ],
+  "HPTemp": [
+    {
+      "type": "string"
+    }
+  ],
+  "Wpn3 Damage ": [
+    {
+      "type": "string"
+    }
+  ],
+  "SleightofHand": [
+    {
+      "type": "string"
+    }
+  ],
+  "CHamod": [
+    {
+      "type": "string"
+    }
+  ],
+  "Survival": [
+    {
+      "type": "string"
+    }
+  ],
+  "AttacksSpellcasting": [
+    {
+      "type": "string"
+    }
+  ],
+  "Passive": [
+    {
+      "type": "string"
+    }
+  ],
+  "CP": [
+    {
+      "type": "string"
+    }
+  ],
+  "ProficienciesLang": [
+    {
+      "type": "string"
+    }
+  ],
+  "SP": [
+    {
+      "type": "string"
+    }
+  ],
+  "EP": [
+    {
+      "type": "string"
+    }
+  ],
+  "GP": [
+    {
+      "type": "string"
+    }
+  ],
+  "PP": [
+    {
+      "type": "string"
+    }
+  ],
+  "Equipment": [
+    {
+      "type": "string"
+    }
+  ],
+  "Features and Traits": [
+    {
+      "type": "string"
+    }
+  ],
+  "CharacterName 2": [
+    {
+      "type": "string"
+    }
+  ],
+  "Age": [
+    {
+      "type": "string"
+    }
+  ],
+  "Height": [
+    {
+      "type": "string"
+    }
+  ],
+  "Weight": [
+    {
+      "type": "string"
+    }
+  ],
+  "Eyes": [
+    {
+      "type": "string"
+    }
+  ],
+  "Skin": [
+    {
+      "type": "string"
+    }
+  ],
+  "Hair": [
+    {
+      "type": "string"
+    }
+  ],
+  "Faction Symbol Image": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Allies": [
+    {
+      "type": "string"
+    }
+  ],
+  "FactionName": [
+    {
+      "type": "string"
+    }
+  ],
+  "Backstory": [
+    {
+      "type": "string"
+    }
+  ],
+  "Feat+Traits": [
+    {
+      "type": "string"
+    }
+  ],
+  "Treasure": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spellcasting Class 2": [
+    {
+      "type": "string"
+    }
+  ],
+  "SpellcastingAbility 2": [
+    {
+      "type": "string"
+    }
+  ],
+  "SpellSaveDC  2": [
+    {
+      "type": "string"
+    }
+  ],
+  "SpellAtkBonus 2": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 19": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 19": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1014": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1015": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1016": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1017": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1018": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1019": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1020": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1021": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1022": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 314": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3031": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3032": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3033": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3034": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3035": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3036": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3037": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3038": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3039": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3040": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 321": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 320": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3060": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3061": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3062": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3063": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3064": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3065": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3066": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 315": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3041": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 1023": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 251": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 309": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3010": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3011": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3012": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3013": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3014": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3015": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3016": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3017": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3018": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3019": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 1024": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1025": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1026": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1027": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1028": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1029": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1030": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1031": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1032": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1033": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 20": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 20": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1034": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1035": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1036": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1037": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1038": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1039": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1040": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1041": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1042": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1043": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1044": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1045": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1046": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 21": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 21": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1047": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1048": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1049": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1050": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1051": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1052": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1053": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1054": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1055": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1056": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1057": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1058": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1059": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 22": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 22": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1060": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1061": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1062": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1063": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1064": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 323": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 322": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3067": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3068": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3069": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3070": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3071": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3072": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3073": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 1065": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1066": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1067": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1068": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1069": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1070": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1071": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 317": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 1072": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 23": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 23": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1073": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1074": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1075": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1076": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1077": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1078": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1079": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1080": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1081": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 24": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 24": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1082": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1083": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1084": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1085": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1086": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1087": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1088": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1089": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1090": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 25": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 25": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1091": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1092": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1093": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1094": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1095": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1096": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1097": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1098": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 1099": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsTotal 26": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 26": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10100": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10101": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10102": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10103": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 316": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3042": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3043": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3044": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3045": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3046": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3047": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3048": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3049": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3050": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3051": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3052": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 10104": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 325": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 324": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3074": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3075": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3076": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3077": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 10105": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10106": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 3078": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "SlotsTotal 27": [
+    {
+      "type": "string"
+    }
+  ],
+  "SlotsRemaining 27": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 313": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 310": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3020": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3021": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3022": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3023": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3024": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3025": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3026": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3027": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3028": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3029": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3030": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 10107": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10108": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 10109": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 101010": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 101011": [
+    {
+      "type": "string"
+    }
+  ],
+  "Spells 101012": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 319": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 318": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3053": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3054": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3055": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3056": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3057": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3058": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3059": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 327": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 326": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3079": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3080": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3081": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Check Box 3082": [
+    {
+      "type": "boolean"
+    }
+  ],
+  "Spells 101013": [
+    {
+      "type": "string"
+    }
+  ],
+  "Check Box 3083": [
+    {
+      "type": "boolean"
+    }
+  ]
+}

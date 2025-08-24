@@ -19,23 +19,46 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
 
     handleGenerate(event: any) {
         event.preventDefault();
-        this.processPdf();
+        // Hold Alt while clicking Generate to dump PDF field names instead of filling
+        const debugListFields = !!event.altKey;
+        this.processPdf(debugListFields);
     }
 
-    processPdf() {
+    processPdf(debugListFields: boolean = false) {
         let xhr = new XMLHttpRequest();
         xhr.open('GET', './DnD_5E_CharacterSheet - Form Fillable.pdf', true);
         xhr.responseType = 'arraybuffer';
-        let process = this.fillPdfFields;
+        const processFill = this.fillPdfFields;
+        const processList = this.dumpPdfFieldNames;
         xhr.onload = function () {
             if (this.status === 200) {
-                process(this.response);
+                if (debugListFields) {
+                    processList(this.response);
+                } else {
+                    processFill(this.response);
+                }
             } else {
                 alert('Couldn\'t obtain the character sheet PDF blob.');
             }
         };
         xhr.send();
     };
+
+    dumpPdfFieldNames = (blob: any) => {
+        try {
+            // @ts-ignore: Legacy library
+            const fields = pdfform().list_fields(blob);
+            // Pretty-print to console for quick lookup
+            // eslint-disable-next-line no-console
+            console.log('PDF form fields:', fields);
+            // Also download as JSON for convenience
+            const out = new Blob([JSON.stringify(fields, null, 2)], { type: 'application/json' });
+            saveAs(out, 'pdf-fields.json');
+            alert('Field list generated. Check console and downloaded pdf-fields.json');
+        } catch (e) {
+            alert('Failed to list PDF fields: ' + (e as any)?.message);
+        }
+    }
 
     get allChoicesFulfilled(): boolean {
         return this.props.allProficienciesChosen() &&
@@ -288,6 +311,94 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
         return false;
     };
 
+    addSpellcastingFields(fields: any) {
+        const o = this.props;
+        const spellcasting = o.class.spellCasting;
+        if (!spellcasting) return;
+
+        const spellAbility = spellcasting.modifier || 0;
+        const spellcastingModifier = o.statModifiers[spellAbility];
+        const spellSaveDc = 8 + this.proficiencyBonus + spellcastingModifier;
+        const spellAttackBonus = this.proficiencyBonus + spellcastingModifier;
+
+        fields['Spellcasting Class 2'] = [o.class.text];
+        fields['SpellcastingAbility 2'] = [reference.stats[spellAbility].text];
+    // Note: Field name has two spaces before the index in this PDF
+    fields['SpellSaveDC  2'] = [spellSaveDc];
+        fields['SpellAtkBonus 2'] = [spellAttackBonus];
+
+        // Group selected spells by level (0..9)
+        const spellsByLevel: Record<number, string[]> = { 0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [] };
+        for (const s of o.spells) {
+            const lvl = typeof s.level === 'number' ? s.level : 0;
+            const name = (s && typeof s.name === 'string') ? s.name : '';
+            if (name && lvl >= 0 && lvl <= 9) {
+                spellsByLevel[lvl].push(name);
+            }
+        }
+
+        // Page 3 fields mapping used by the PDF:
+        // Spells 1-x: Cantrips list, Spells 2-x: 1st-level, ..., Spells 10-x: 9th-level
+        // Also, SlotsTotal N / SlotsRemaining N: total and remaining slots per level (1..9)
+
+        // Field names from extracted pdf-fields.json
+        const CANTRIP_FIELDS = [
+            'Spells 1014','Spells 1015','Spells 1016','Spells 1017','Spells 1018','Spells 1019','Spells 1020','Spells 1021','Spells 1022'
+        ];
+
+        // Helper to build a contiguous range of field names Spells <n>
+        const buildSpellFields = (start: number, end: number): string[] => {
+            const arr: string[] = [];
+            for (let i = start; i <= end; i++) arr.push(`Spells ${i}`);
+            return arr;
+        };
+
+        // Level-specific fields mapping per pdf-fields.json
+        const SPELL_FIELDS_BY_LEVEL: Record<number, string[]> = {
+            0: CANTRIP_FIELDS,
+            1: buildSpellFields(1023, 1033),
+            2: buildSpellFields(1034, 1046),
+            3: buildSpellFields(1047, 1059),
+            4: buildSpellFields(1060, 1071),
+            5: buildSpellFields(1072, 1081),
+            6: buildSpellFields(1082, 1090),
+            7: buildSpellFields(1091, 1099),
+            8: buildSpellFields(10100, 10103),
+            // Level 9 fields are a bit oddly numbered in the PDF: 10104..10109 then 101010..101013
+            9: [
+                'Spells 10104','Spells 10105','Spells 10106','Spells 10107','Spells 10108','Spells 10109',
+                'Spells 101010','Spells 101011','Spells 101012','Spells 101013'
+            ],
+        };
+
+        // Fill Cantrips (level 0)
+        const cantripNames = spellsByLevel[0];
+        const cantripFields = SPELL_FIELDS_BY_LEVEL[0];
+        for (let i = 0; i < cantripNames.length && i < cantripFields.length; i++) {
+            fields[cantripFields[i]] = [cantripNames[i]];
+        }
+
+        // Fill Levels 1..9 into their exact field blocks
+        for (let lvl = 1; lvl <= 9; lvl++) {
+            const names = spellsByLevel[lvl];
+            const dest = SPELL_FIELDS_BY_LEVEL[lvl] || [];
+            const max = dest.length;
+            for (let i = 0; i < names.length && i < max; i++) {
+                fields[dest[i]] = [names[i]];
+            }
+        }
+
+        // Slots: map level 1..9 -> suffix 19..27
+        const spellcasterLevel = o.class.spellCasting!.spellTable?.find(sl => sl.level === o.level);
+        const slots = spellcasterLevel?.numSpellsOfEachLevel || [];
+        for (let level = 1; level <= 9; level++) {
+            const totalSlots = slots[level - 1] || 0;
+            const suffix = 18 + level; // 19..27
+            fields[`SlotsTotal ${suffix}`] = [totalSlots];
+            fields[`SlotsRemaining ${suffix}`] = [totalSlots];
+        }
+    }
+
     get armorAndWeaponsProficiencyText(): string {
         let armorProfs = this.props.class.armorProficiencies;
         let weaponProfs = this.props.class.weaponProficiencies;
@@ -437,8 +548,12 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
         fields['Bonds'] = [this.bondText];
         fields['Flaws'] = [this.flawText];
 
-        // https://rpg.stackexchange.com/questions/101169/how-does-passive-perception-work
-        let pp = 10 + o.statModifiers[4];
+            if (o.class.spellCasting) {
+                this.addSpellcastingFields(fields);
+            }
+
+            // https://rpg.stackexchange.com/questions/101169/how-does-passive-perception-work
+            let pp = 10 + o.statModifiers[4];
 
         let proficiencies = o.getProficiencies();
 
