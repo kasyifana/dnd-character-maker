@@ -118,6 +118,9 @@ type Feature = {
     text: string;
     replaces?: number;
     archetypeId?: number;
+    // Reference path to the corresponding description in 02 classes.json
+    // Format suggestion: "<class-slug> > [<subclass-slug> >] <feature-slug>"
+    descriptionRef?: string;
 }
 
 export type ArmorCategory = {

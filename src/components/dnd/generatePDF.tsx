@@ -6,6 +6,8 @@ import Util from '../../core/util';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import featureDesc from '../../core/featureDescriptions';
+import raceFeatureDesc from '../../core/raceFeatureDescriptions';
 
 interface CharacterPdfModel extends DndCharacter {
     allLanguagesChosen: () => boolean;
@@ -25,6 +27,72 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
         const debugListFields = !!event.altKey;
         this.processPdf(debugListFields);
     }
+
+    handleExportClassFeaturesPdf = () => {
+        const o = this.props;
+        const margin = 36;
+        const page = { width: 595.28, height: 841.89 }; // A4 points
+
+        // Helper to extract plain feature name from "Name (p.xx)" style strings
+        const extractName = (s: string) => s.replace(/\s*\([^)]*\)\s*$/g, '').trim();
+
+        const className = o.class.text;
+        const subclassName = o.class.subclass && o.archetype != null ? o.class.subclass.archetypes[o.archetype]?.text : undefined;
+
+        type Item = { title: string; desc?: string };
+        const items: Item[] = [];
+        for (const classFeature of o.class.features) {
+            if (classFeature.level <= o.level && (classFeature.archetypeId === undefined || classFeature.archetypeId === o.archetype)) {
+                const title = extractName(classFeature.text);
+                const desc = featureDesc.getFeatureDescription(className, title, subclassName);
+                items.push({ title, desc: desc ? String(desc) : undefined });
+            }
+        }
+
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        const header = `Class Features — ${className}${subclassName ? ' · ' + subclassName : ''} · Level ${o.level}`;
+        doc.text(header, margin, margin + 12);
+
+        let y = margin + 28;
+        const contentWidth = page.width - 2 * margin;
+        const lineGap = 6;
+
+        for (const it of items) {
+            // Add page if near bottom
+            if (y > page.height - margin - 40) {
+                doc.addPage();
+                y = margin;
+            }
+            // Title
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(12);
+            const titleLines = doc.splitTextToSize(it.title, contentWidth);
+            doc.text(titleLines, margin, y);
+            y += titleLines.length * 14;
+
+            // Description
+            if (it.desc) {
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(10);
+                const descLines = doc.splitTextToSize(it.desc, contentWidth);
+                // paginate
+                for (const chunk of descLines) {
+                    if (y > page.height - margin - 14) {
+                        doc.addPage();
+                        y = margin;
+                    }
+                    doc.text(String(chunk), margin, y);
+                    y += 12;
+                }
+            }
+            y += lineGap;
+        }
+
+        const fileBase = `Class Features - ${className}${subclassName ? ' - ' + subclassName : ''}`;
+        doc.save(`${fileBase}.pdf`);
+    };
 
     processPdf(debugListFields: boolean = false) {
         let xhr = new XMLHttpRequest();
@@ -106,20 +174,20 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
     autoTable(doc, {
             startY: 50 + margin,
             head: [[
-        'Name', 'Level', 'Casting Time', 'Range', 'Duration', 'Components', 'Concentration', 'Ritual', 'Description'
+        'Name', 'Level', 'Casting Time', 'Range', 'Duration', 'Components', 'Conc', 'Rit', 'Description'
             ]],
             body: rows,
             styles: { font: 'helvetica', fontSize: 8, cellPadding: 2, valign: 'top' },
             headStyles: { fillColor: [33, 150, 243], textColor: 255, fontStyle: 'bold' },
             columnStyles: {
-                0: { cellWidth: 85 }, // Name (slightly smaller)
-                1: { cellWidth: 26 }, // Lvl smaller
-                2: { cellWidth: 52 }, // Time smaller
-                3: { cellWidth: 45 }, // Range smaller
-                4: { cellWidth: 52 }, // Dur smaller
-                5: { cellWidth: 75 }, // Comp smaller
-                6: { cellWidth: 24 }, // Conc
-                7: { cellWidth: 24 }, // Rit
+        0: { cellWidth: 70 }, // Name smaller
+        1: { cellWidth: 36 }, // Level wider
+        2: { cellWidth: 45 }, // Casting Time smaller
+        3: { cellWidth: 40 }, // Range smaller
+        4: { cellWidth: 53 }, // Duration slightly smaller
+        5: { cellWidth: 68 }, // Components smaller
+        6: { cellWidth: 24 }, // Conc
+        7: { cellWidth: 24 }, // Rit
                 8: { cellWidth: 'auto' }, // Desc gets the rest
             },
             theme: 'grid',
@@ -148,21 +216,32 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
     };
 
     get traitsAndFeatures(): string[] {
-        let result = [];
-        let backgroundFeature = this.props.background.backgroundFeature;
-        result.push(backgroundFeature);
+        const result: string[] = [];
+        const o = this.props;
+        // Background feature first
+        const backgroundFeature = o.background.backgroundFeature;
+        if (backgroundFeature) result.push(backgroundFeature);
 
-        let classFeatures = this.props.class.features;
-        for (let classFeature of classFeatures) {
-            // We meet the level and it has no archetype requirement, or we match the archetype requirement
-            // TODO: Also check for replacements
-            if (classFeature.level <= this.props.level &&
-                (classFeature.archetypeId === undefined || classFeature.archetypeId === this.props.archetype)) {
-                result.push(classFeature.text);
+        // Helper to extract plain feature name from "Name (p.xx)" style strings
+        const extractName = (s: string) => {
+            return s.replace(/\s*\([^)]*\)\s*$/g, '').trim();
+        };
+
+        // Resolve class & optional subclass text
+        const className = o.class.text;
+        const subclassName = o.class.subclass && o.archetype != null ? o.class.subclass.archetypes[o.archetype]?.text : undefined;
+
+        // Include class features up to current level & matching chosen archetype
+        for (const classFeature of o.class.features) {
+            if (classFeature.level <= o.level && (classFeature.archetypeId === undefined || classFeature.archetypeId === o.archetype)) {
+                const title = extractName(classFeature.text);
+        const desc = featureDesc.getFeatureDescription(className, title, subclassName);
+        const line = desc ? `${title}: ${String(desc)}` : title;
+                result.push(line);
             }
         }
 
-        return result;
+    return result;
     };
     
     get additionalTraitsAndFeatures(): string[] {
@@ -173,9 +252,12 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
             result.push(backgroundSpecialty);
         }
 
-        let raceFeatures = this.props.race.extraFeatures;
-        for (let raceFeature of raceFeatures) {
-            result.push(raceFeature.text);
+        const raceText = this.props.race.text;
+        const raceFeatures = this.props.race.extraFeatures;
+        for (const raceFeature of raceFeatures) {
+            const title = raceFeature.text.replace(/\s*\([^)]*\)\s*$/g, '').trim();
+            const desc = raceFeatureDesc.getRaceFeatureDescription(raceText, title);
+            result.push(desc ? `${title}: ${String(desc)}` : raceFeature.text);
         }
 
         return result;
@@ -763,6 +845,13 @@ export default class GeneratePDF extends React.Component<CharacterPdfModel> {
                     onClick={(e) => this.handleGenerate(e)}
                     className={'button is-large ' + (!this.allChoicesFulfilled ? 'is-outlined' : 'is-success')}
                 >Generate PDF</button>
+                <div style={{ height: 8 }} />
+                <button
+                    type="button"
+                    id="export-class-features"
+                    onClick={this.handleExportClassFeaturesPdf}
+                    className={'button is-large is-primary'}
+                >Export Class Features PDF</button>
                 <div style={{ height: 8 }} />
                 <button
                     type="button"
